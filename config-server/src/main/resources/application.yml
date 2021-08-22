@@ -1,11 +1,27 @@
-server:
-  port: 8888
 spring:
+  profiles:
+    active: composite
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/thomasandre84/spring-tryouts
-          skipSslValidation: true
-          basedir: target/config
-          default-label: feature(_)init-config-server
+        composite:
+          - type: git
+            uri: https://github.com/thomasandre84/spring-tryouts.git
+            skipSslValidation: true
+            basedir: target/cloud-config
+            default-label: feature/init-config-server
+            cloneOnStart: true
+            timeout: 4
+            searchPaths: '{application}'
+            #force-pull: true
+            #deleteUntrackedBranches: true
+            refreshRate: 60
+          - type: native
+            uri: file:./native-config
+
+
+
+  config:
+    name: configserver
+server:
+  port: 8888
