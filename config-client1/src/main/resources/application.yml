@@ -3,3 +3,9 @@ spring:
     config:
       import-check:
         enabled: false
+  application:
+    name: client1
+  profiles:
+    active: cloud
+server:
+  port: 8001

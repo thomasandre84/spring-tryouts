@@ -13,13 +13,16 @@ import reactor.core.publisher.Mono;
 @RestController
 public class Client1Application {
 
+	@Value("${test.message ?: default}")
+	String message;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Client1Application.class, args);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<Mono<String>> hello() {
-		return ResponseEntity.ok(Mono.just("Hello Client1"));
+		return ResponseEntity.ok(Mono.just("Hello Client1 with Message: " + message));
 	}
 
 }

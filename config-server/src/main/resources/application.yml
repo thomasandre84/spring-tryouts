@@ -9,10 +9,10 @@ spring:
             uri: https://github.com/thomasandre84/spring-tryouts.git
             skipSslValidation: true
             basedir: target/cloud-config
-            default-label: feature/init-config-server
+            default-label: feature/config-clients
             cloneOnStart: true
             timeout: 4
-            searchPaths: '{application}'
+            searchPaths: 'git-config'
             #force-pull: true
             #deleteUntrackedBranches: true
             refreshRate: 60

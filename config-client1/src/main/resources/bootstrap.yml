@@ -1,11 +1,8 @@
-server:
-  port: 8001
 spring:
   cloud:
     config:
-      enabled: true
-      uri: http://localhost:8888
-  application:
-    name: client2
+      uri: http://localhost:8888/git-config/
+      failFast: true
+health:
   config:
-    import: 'optional:configserver:'
+    enabled: true
