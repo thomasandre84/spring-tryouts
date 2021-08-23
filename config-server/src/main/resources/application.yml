@@ -5,6 +5,11 @@ spring:
     config:
       server:
         composite:
+          - type: native
+            searchLocations:
+              - file:./native-config/{application}
+              - file:./native-config/{application}/{profile}
+              - file:./native-config/{application}/{profile}/{label}
           - type: git
             uri: https://github.com/thomasandre84/spring-tryouts.git
             skipSslValidation: true
@@ -12,16 +17,21 @@ spring:
             default-label: feature/config-clients
             cloneOnStart: true
             timeout: 4
-            searchPaths: 'git-config'
+            searchPaths:
+              - '/git-config/{application}'
+              - '/git-config/{application}/profile'
             #force-pull: true
             #deleteUntrackedBranches: true
             refreshRate: 60
-          - type: native
-            uri: file:./native-config
-
-
-
   config:
     name: configserver
+
+config:
+  provider:
+    native:
+      enabled: true
+    git:
+      enabled: true
+
 server:
   port: 8888
