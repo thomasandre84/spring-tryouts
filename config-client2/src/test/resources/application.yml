@@ -3,3 +3,5 @@ spring:
     config:
       import-check:
         enabled: false
+test:
+  message: test

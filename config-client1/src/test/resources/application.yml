@@ -9,3 +9,5 @@ spring:
     active: cloud
 server:
   port: 8001
+test:
+  message: test

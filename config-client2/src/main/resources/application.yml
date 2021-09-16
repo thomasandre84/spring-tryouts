@@ -1,0 +1,16 @@
+spring:
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888/
+      failFast: true
+  application:
+    name: client2
+  profiles:
+    active: cloud
+server:
+  port: 8002
+health:
+  config:
+    enabled: true

@@ -1,5 +1,6 @@
 package com.example.client1;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +13,16 @@ import reactor.core.publisher.Mono;
 @RestController
 public class Client2Application {
 
+	@Value("${test.message}")
+	String message;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Client2Application.class, args);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<Mono<String>> hello() {
-		return ResponseEntity.ok(Mono.just("Hello Client2"));
+		return ResponseEntity.ok(Mono.just(message));
 	}
 
 }
