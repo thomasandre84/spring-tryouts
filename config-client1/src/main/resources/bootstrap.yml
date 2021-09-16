@@ -3,6 +3,8 @@ spring:
     config:
       uri: http://localhost:8888/git-config/
       failFast: true
+server:
+  port: 8001
 health:
   config:
     enabled: true
