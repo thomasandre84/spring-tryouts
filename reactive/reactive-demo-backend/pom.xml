@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github.thomasandre84</groupId>
-	<artifactId>reactive-demo</artifactId>
+	<artifactId>reactive-demo-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>reactive-demo</name>
-	<description>Demo project for Spring Boot Reactive</description>
+	<name>reactive-demo-backend</name>
+	<description>Demo project for Spring Boot Reactive Backend</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

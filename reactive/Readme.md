@@ -16,3 +16,18 @@ Nicht-reaktive Beispiele hierzu:
 * Message Driven: Threads blockieren, während sie auf RPC/IO Antworten warten.
 
 
+## Analogien
+Man kann lokal einen reaktiven Service bauen. RxJava, Reactor (Spring-Webflux), Vertx, Mutiny etc. sind Java Libraries die Java Implementierungen hierfür an.
+Ab Java 9 erhielt auch eine Implementierung (Flow) Einzug in die Concurrent Library und somit in die Base JVM.
+
+Ein System muss nicht auf einen Service beschränkt sein. Kommunikation zwischen mehreren Servern kann auch über Nachrichten geschehen, wie z.B. über Message Broker oder Protokolle die nicht nur 1:1 sondern auch 1:Many Verbindungen zulassen.
+
+| Reactor             | Kafka              |
+|---------------------|--------------------|
+| Publisher           | Producer           |
+| Subscriber          | Consumer           |
+| Hot Stream          | Topic              |
+| Cold Stream         | -                  |
+| Mono (0-1 Messages) | Record             |
+| Flux (0-n Messages) | n Records          |
+| Processor | Topic |
