@@ -4,11 +4,11 @@ import com.github.thomasandre84.orgchart.model.Product;
 import com.github.thomasandre84.orgchart.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -33,6 +33,17 @@ public class ProductController {
         } catch (Exception e) {
             log.error("Error ", e);
             return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(product));
+        } catch (Exception e) {
+            log.error("Could not add Product: {} ", product.getName(), e);
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, e.getMessage(), e);
         }
     }
 
