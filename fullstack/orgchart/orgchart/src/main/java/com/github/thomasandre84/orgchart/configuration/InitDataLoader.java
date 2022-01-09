@@ -2,6 +2,7 @@ package com.github.thomasandre84.orgchart.configuration;
 
 import com.github.thomasandre84.orgchart.model.OrgUnit;
 import com.github.thomasandre84.orgchart.model.Product;
+import com.github.thomasandre84.orgchart.model.dto.EmployeeDto;
 import com.github.thomasandre84.orgchart.service.EmployeeService;
 import com.github.thomasandre84.orgchart.service.OrgUnitService;
 import com.github.thomasandre84.orgchart.service.ProductService;
@@ -31,6 +32,16 @@ public class InitDataLoader implements CommandLineRunner {
     }
 
     private void loadEmployees() {
+        var empl0 = new EmployeeDto("user0", "unit0", null, null);
+        var empl1 = new EmployeeDto("user1", "unit1", "apple", "user0");
+        var empl2 = new EmployeeDto("user2", "unit2", "orange", "user0");
+        var empl3 = new EmployeeDto("user3", "unit1", "apple", "user1");
+
+        employeeService.saveEmployee(empl0);
+        employeeService.saveEmployee(empl1);
+        employeeService.saveEmployee(empl2);
+        employeeService.saveEmployee(empl3);
+
     }
 
     private void loadProducts() {
