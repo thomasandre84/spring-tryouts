@@ -38,6 +38,7 @@ public class EmployeeService {
 
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
         Employee employee = mapDtoToEntity(employeeDto);
+        log.info("Going to save new Employee {} ", employeeDto.userId());
         Employee saved = employeeRepository.save(employee);
         return mapEntityToDto(saved);
     }

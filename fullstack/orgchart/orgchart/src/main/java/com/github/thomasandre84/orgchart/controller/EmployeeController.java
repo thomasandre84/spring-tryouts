@@ -1,6 +1,5 @@
 package com.github.thomasandre84.orgchart.controller;
 
-import com.github.thomasandre84.orgchart.model.Employee;
 import com.github.thomasandre84.orgchart.model.dto.EmployeeDto;
 import com.github.thomasandre84.orgchart.service.EmployeeService;
 import org.slf4j.Logger;
