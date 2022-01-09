@@ -42,7 +42,7 @@ public class EmployeeService {
         return mapEntityToDto(saved);
     }
 
-    Employee mapDtoToEntity(EmployeeDto dto) {
+    private Employee mapDtoToEntity(EmployeeDto dto) {
         Employee employee = new Employee();
         employee.setUserId(dto.userId());
         Optional<OrgUnit> orgUnit = orgUnitService.findByName(dto.orgUnit());
@@ -69,7 +69,7 @@ public class EmployeeService {
         return employee;
     }
 
-    EmployeeDto mapEntityToDto(Employee employee) {
+    private EmployeeDto mapEntityToDto(Employee employee) {
         String productName = null;
         String superVisorId = null;
         if (employee.getProduct() != null) productName = employee.getProduct().getName();
