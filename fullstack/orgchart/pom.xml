@@ -13,8 +13,17 @@
     <name>orgchart parent</name>
     <description>Demo projects for Spring Boot Orgchart</description>
 
+    <properties>
+        <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
+        <node.version>v14.15.4</node.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <docker.image.prefix>artifactory.six-group.net</docker.image.prefix>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <ui.path>orgchart-ui</ui.path>
+    </properties>
+
     <modules>
-        <!--<module>orgchart-ui</module>-->
+        <module>orgchart-ui</module>
         <module>orgchart</module>
     </modules>
 
