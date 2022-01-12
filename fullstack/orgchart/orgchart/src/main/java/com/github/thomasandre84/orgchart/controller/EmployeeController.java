@@ -13,6 +13,9 @@ import java.util.List;
 
 import static com.github.thomasandre84.orgchart.controller.EmployeeController.BASE_URL;
 
+/**
+ * Rest Controller for employees REST calls.
+ */
 @RestController
 @RequestMapping(value = BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmployeeController {
@@ -26,11 +29,20 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    /**
+     * Get all Employees.
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
+    /**
+     * Add a new Employee.
+     * @param employeeDto
+     * @return
+     */
     @PostMapping
     public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employeeDto) {
         return ResponseEntity.status(HttpStatus.CREATED)

@@ -3,6 +3,9 @@ package com.github.thomasandre84.orgchart;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Spring Boot Starter class.
+ */
 @SpringBootApplication
 public class OrgchartApplication {
 

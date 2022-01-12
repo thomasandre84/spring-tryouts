@@ -13,19 +13,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class OrgUnitControllerTest {
+class ProductControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void getAllOrgUnits() throws Exception {
-        this.mockMvc.perform(get(OrgUnitController.BASE_URL))
+    void getAllProducts() throws Exception {
+        this.mockMvc.perform(get(ProductController.BASE_URL))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    void addOrgUnit() {
+    void addProduct() {
     }
 }

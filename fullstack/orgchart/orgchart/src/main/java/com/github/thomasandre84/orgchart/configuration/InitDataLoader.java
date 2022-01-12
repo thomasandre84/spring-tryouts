@@ -10,6 +10,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+/**
+ * Load initial Data at startup of the application.
+ * For testing purpose only.
+ */
 //@Profile("dev")
 @Configuration
 public class InitDataLoader implements CommandLineRunner {

@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * The Employee Entity Class.
+ */
 @Entity
 public class Employee {
 

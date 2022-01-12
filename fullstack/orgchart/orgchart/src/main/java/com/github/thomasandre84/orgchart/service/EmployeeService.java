@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The Bean containing the logic for managing actions with Employees.
+ */
 @Service
 public class EmployeeService {
     private static final Logger log = LoggerFactory.getLogger(EmployeeService.class);
@@ -29,6 +32,10 @@ public class EmployeeService {
         this.productService = productService;
     }
 
+    /**
+     * Get all Employees.
+     * @return
+     */
     public List<EmployeeDto> getAllEmployees() {
         return employeeRepository.findAll()
                 .stream()
@@ -36,6 +43,11 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Add a new Employee.
+     * @param employeeDto
+     * @return
+     */
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
         Employee employee = mapDtoToEntity(employeeDto);
         log.info("Going to save new Employee {} ", employeeDto.userId());

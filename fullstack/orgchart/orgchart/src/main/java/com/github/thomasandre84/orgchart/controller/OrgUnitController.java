@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest Controller for OrgUnits.
+ */
 @RestController
 @RequestMapping(value = OrgUnitController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class OrgUnitController {
@@ -23,6 +26,10 @@ public class OrgUnitController {
         this.orgUnitService = orgUnitService;
     }
 
+    /**
+     * Get all OrgUnits.
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<OrgUnit>> getAllOrgUnits() {
         try {
@@ -33,6 +40,11 @@ public class OrgUnitController {
         }
     }
 
+    /**
+     * Add a new OrgUnit.
+     * @param orgUnit
+     * @return
+     */
     @PostMapping
     public ResponseEntity<OrgUnit> addOrgUnit(@RequestBody OrgUnit orgUnit) {
         try {

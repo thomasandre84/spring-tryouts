@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The Bean containing the logic for managing actions with OrgUnits.
+ */
 @Service
 public class OrgUnitService {
     private static final Logger log = LoggerFactory.getLogger(OrgUnitService.class);
@@ -19,16 +22,30 @@ public class OrgUnitService {
         this.orgUnitRepository = orgUnitRepository;
     }
 
+    /**
+     * Save a new OrgUnit.
+     * @param orgUnit
+     * @return
+     */
     public OrgUnit saveOrgUnit(OrgUnit orgUnit) {
         log.info("Going to save: {}", orgUnit);
         OrgUnit saved = orgUnitRepository.save(orgUnit);
         return saved;
     }
 
+    /**
+     * Get all OrgUnits.
+     * @return
+     */
     public List<OrgUnit> getAllOrgUnits() {
         return orgUnitRepository.findAll();
     }
 
+    /**
+     * Try to find an OrgUnit by name.
+     * @param name
+     * @return
+     */
     public Optional<OrgUnit> findByName(String name) {
         return orgUnitRepository.findByName(name);
     }

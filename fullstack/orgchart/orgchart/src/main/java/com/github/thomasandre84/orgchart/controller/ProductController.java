@@ -14,6 +14,9 @@ import java.util.List;
 
 import static com.github.thomasandre84.orgchart.controller.ProductController.BASE_URL;
 
+/**
+ * Rest Controller for Products.
+ */
 @RestController
 @RequestMapping(value = BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
@@ -26,6 +29,10 @@ public class ProductController {
         this.productService = productService;
     }
 
+    /**
+     * Get all Products.
+     * @return
+     */
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         try {
@@ -36,6 +43,11 @@ public class ProductController {
         }
     }
 
+    /**
+     * Add a new Product.
+     * @param product
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         try {

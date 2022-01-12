@@ -2,6 +2,9 @@ package com.github.thomasandre84.orgchart.model;
 
 import javax.persistence.*;
 
+/**
+ * The Product data class.
+ */
 @Entity
 public class Product {
 
