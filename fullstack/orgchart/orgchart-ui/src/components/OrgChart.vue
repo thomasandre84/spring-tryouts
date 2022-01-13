@@ -1,6 +1,13 @@
 <template>
-  <div>
-    {{ employees }}
+  <!--<div>
+    {{ state }}
+  </div>-->
+    <div v-if="state.emplData.data">
+  <OrganizationChart :value="state.emplData">
+      <template #default="slotProps">
+          <span>{{slotProps.node.data}}</span>
+      </template>
+  </OrganizationChart>
   </div>
   <div>
   <OrganizationChart :value="data">
@@ -12,7 +19,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, watch } from 'vue'
+import { defineComponent, reactive, ref, onMounted, watch } from 'vue'
 import { fetchData } from '@/http/rest.js'
 import OrganizationChart from 'primevue/organizationchart';
 
@@ -21,7 +28,13 @@ export default defineComponent ({
   components: {OrganizationChart},
   setup() {
     const uri = '/employees'
-    const employees = ref([])
+    const respData = ref([])
+    const state = reactive({
+      emplData: {}
+    })
+    /*const emplData = reactive({
+      data: {}
+    })*/
     //const employee_org_chart = {}
     const data = {
                                  key: '0',
@@ -59,29 +72,42 @@ export default defineComponent ({
                              }
 
     function fetchEmployees() {
-      fetchData(uri, employees)
+      fetchData(uri, respData)
+    }
+
+    function refillChartData() {
+      console.log("Going to refill")
+      let root_empl = findRoot()
+      console.log(root_empl)
+      state.emplData['key'] = '0'
+      state.emplData['data'] = root_empl
+
     }
 
     function findRoot() {
-        return employees.value.filter(em => em.supervisor == null)
+        console.log(respData)
+        let root = respData.value.filter(boss => boss.supervisor == undefined)
+        console.log(root)
+        return root[0]
     }
 
-    function sortEmployees() {
+    /*function sortEmployees() {
         let root_empl = findRoot();
         console.log(root_empl)
-    }
+    }*/
 
     onMounted(() => {
       console.log('Mounting OrgChart')
       fetchEmployees()
       console.log('employees fetched')
-      sortEmployees()
+      //sortEmployees()
     })
 
-    watch(employees, fetchEmployees)
+    //watch(respData, fetchEmployees)
+    watch(respData, refillChartData)
 
     return {
-      employees,
+      state,
       data
     }
   }
