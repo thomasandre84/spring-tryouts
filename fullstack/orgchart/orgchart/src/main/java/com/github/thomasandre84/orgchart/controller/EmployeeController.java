@@ -35,6 +35,7 @@ public class EmployeeController {
      */
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
+        log.info("Fetching data");
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
